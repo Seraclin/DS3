@@ -47,9 +47,11 @@ public class NewBehaviourScript : MonoBehaviour
 
         // A better way is to use Input.getAxis(), works with WASD or arrow keys
         // https://docs.unity3d.com/ScriptReference/Input.GetAxis.html
+        /*
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         rb.velocity = new Vector3(horizontal*4f, rb.velocity.y, vertical*4f);
+        */
 
     }
 
