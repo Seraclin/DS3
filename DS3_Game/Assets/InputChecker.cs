@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * This script is used to detect what keys were pressed and print to the Console.
+ * */
 public class InputChecker : MonoBehaviour
 {
     // Start is called before the first frame update
