@@ -119,8 +119,8 @@ MonoBehaviour:
   m_KeyboardXTranslateSpeed: 0.2
   m_KeyboardYTranslateSpeed: 0.2
   m_KeyboardZTranslateSpeed: 0.2
-  m_MouseXTranslateSensitivity: 0.0004
-  m_MouseYTranslateSensitivity: 0.0004
+  m_MouseXTranslateSensitivity: 0.0008
+  m_MouseYTranslateSensitivity: 0.0008
   m_MouseScrollTranslateSensitivity: 0.0002
   m_MouseXRotateSensitivity: 0.1
   m_MouseYRotateSensitivity: 0.1
