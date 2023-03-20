@@ -26,7 +26,7 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         // When P key is pressed, increase points by 1
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.U))
         {
             points += 1;
         }
@@ -34,13 +34,13 @@ public class NewBehaviourScript : MonoBehaviour
         // (x, y, z) = positional 3D axis, x = left/right, y = up/down, z = forward/backwards; requires a Rigidbody
         // use Input.GetKey(key) for holding down key; Input.GetKeyDown(key) for one action per keystroke; 
         // Press up arrow to move object forward, while key is held down
-        if (Input.GetKey(KeyCode.Alpha1))
+        if (Input.GetKey(KeyCode.H))
         {
             rb.velocity = new Vector3(0, 0, 4f); // this is the (x, y, z) of the Rigidbody
         }
 
         // Press down arrow to move backwards, once per key press
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             rb.velocity = new Vector3(0, 0, -4f);
         }

@@ -21,6 +21,15 @@ public class SimpleShoot : MonoBehaviour
     [Tooltip("Casing Ejection Speed")] [SerializeField] private float ejectPower = 150f;
 
 
+    // TODO: sounds, raycast, reloading
+
+    // Sound effects for gun (e.g. shooting, reloading, empty, casing eject)
+
+    // Bullet ray cast (i.e. bullet trail)
+
+    // Limited ammo and reload mechanic 
+
+
     void Start()
     {
         if (barrelLocation == null)
@@ -32,7 +41,7 @@ public class SimpleShoot : MonoBehaviour
 
     void Update()
     {
-        //If you want a different input, change it here
+        // If you want a different input, change it here
         // Docs: https://docs.unity3d.com/ScriptReference/Input.GetButtonDown.html
         // Edit > Project Settings > Input Manager to bring up the Input Manager
         if (Input.GetButtonDown("Fire1"))
@@ -51,6 +60,8 @@ public class SimpleShoot : MonoBehaviour
             //Create the muzzle flash
             GameObject tempFlash;
             tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
+
+            // TODO: muzzle sound effect
 
             //Destroy the muzzle flash effect
             Destroy(tempFlash, destroyTimer);
@@ -80,6 +91,8 @@ public class SimpleShoot : MonoBehaviour
         tempCasing.GetComponent<Rigidbody>().AddExplosionForce(Random.Range(ejectPower * 0.7f, ejectPower), (casingExitLocation.position - casingExitLocation.right * 0.3f - casingExitLocation.up * 0.6f), 1f);
         //Add torque to make casing spin in random direction
         tempCasing.GetComponent<Rigidbody>().AddTorque(new Vector3(0, Random.Range(100f, 500f), Random.Range(100f, 1000f)), ForceMode.Impulse);
+
+        // TODO: casing sound effect 
 
         //Destroy casing after X seconds
         Destroy(tempCasing, destroyTimer);
