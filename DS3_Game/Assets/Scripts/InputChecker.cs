@@ -10,14 +10,41 @@ using Gyroscope = UnityEngine.InputSystem.Gyroscope; // so you can just write ou
  * Input System (sensors): https://docs.unity3d.com/Packages/com.unity.inputsystem@1.5/manual/Sensors.html
  * This is useful for debugging with Unity Remote (with USB and phone) without needing to build/export the project.
  * Adjust inputs in "XRI Default Input Actions" asset menu
+ * Make sure to disable any TrackedPoseDriver(s) when using this, and vice versa
  * */
 public class InputChecker : MonoBehaviour
 {
+    // Phone is sideways so need to correct rotation for Camera
+    private Gyroscope phoneGyro;
+    private Quaternion correctionQuaternion;
+    public Camera playerCam;  // assign player cam via inspector
+
     // Start is called before the first frame update
     void Start()
     {
-        // apparently can't put sensor enabling in start because it happens after game start
+        // apparently can't only put sensor enabling in start because it happens after game start
         // (by default sensors are not enabled)
+
+        if (Gyroscope.current != null)
+        {
+            if (Gyroscope.current.enabled)
+            {
+                Debug.Log("Start InputSystem Gyro: " + Gyroscope.current.angularVelocity.ReadValue()); // Vector3
+            }
+        }
+
+        if (AttitudeSensor.current != null)
+        {
+            if (AttitudeSensor.current.enabled)
+            {
+                Debug.Log("Start InputSystem Attitude: " + AttitudeSensor.current.attitude.ReadValue()); // Quaternion
+            }
+
+        }
+
+        // get the initial gyroscope reading
+        phoneGyro = Gyroscope.current;
+        correctionQuaternion = Quaternion.Euler(90f, 0f, 0f);
     }
 
     // Update is called once per frame
@@ -65,6 +92,12 @@ public class InputChecker : MonoBehaviour
 
         // Note: using gyro/attitude sensor disables XR Device Simulator position/rotation tracking
         // In order to reenable, rebind the XRI Default Input Actions>centerEyePosition/Rotation [XR HMD]
+        // Also gyroscope readings are lefthanded while Unity's are righthanded
+        // Warning: TrackedPoseDriver and this won't work while both are active as the former overrides the rotations
+        if(playerCam != null)
+        {
+            GyroModifyCamera();
+        }
     }
 
     public void detectPressedKeyOrButton()
@@ -76,5 +109,19 @@ public class InputChecker : MonoBehaviour
                 Debug.Log("Keycode down: " + kcode);
             }
         }
+    }
+
+    // Make the necessary change to the camera.
+    void GyroModifyCamera()
+    {
+        Quaternion gyroQuaternion = GyroToUnity(Input.gyro.attitude);
+        // rotate coordinate system 90 degrees. Correction Quaternion has to come first
+        Quaternion calculatedRotation = correctionQuaternion * gyroQuaternion;
+        playerCam.transform.rotation = calculatedRotation;
+    }
+
+    private static Quaternion GyroToUnity(Quaternion q)
+    {
+        return new Quaternion(q.x, q.y, -q.z, -q.w);
     }
 }

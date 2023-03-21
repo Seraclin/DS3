@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.de-panther.webxr": "https://github.com/De-Panther/unity-webxr-export.git?path=/Packages/webxr",
+    "com.de-panther.webxr-interactions": "https://github.com/De-Panther/unity-webxr-export.git?path=/Packages/webxr-interactions",
     "com.google.xr.cardboard": "https://github.com/googlevr/cardboard-xr-plugin.git",
     "com.unity.collab-proxy": "2.0.1",
     "com.unity.feature.development": "1.0.1",
@@ -16,6 +18,7 @@
     "com.unity.toolchain.win-x86_64-linux-x86_64": "2.0.4",
     "com.unity.ugui": "1.0.0",
     "com.unity.visualscripting": "1.8.0",
+    "com.unity.xr.arcore": "4.2.7",
     "com.unity.xr.arkit": "4.2.7",
     "com.unity.xr.interaction.toolkit": "2.2.0",
     "com.unity.xr.management": "4.2.1",

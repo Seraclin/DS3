@@ -7,6 +7,24 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.de-panther.webxr": {
+      "version": "https://github.com/De-Panther/unity-webxr-export.git?path=/Packages/webxr",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.xr.management": "3.2.13"
+      },
+      "hash": "700808dafcbff1e3fdf47de316b9bace3d8561b7"
+    },
+    "com.de-panther.webxr-interactions": {
+      "version": "https://github.com/De-Panther/unity-webxr-export.git?path=/Packages/webxr-interactions",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.de-panther.webxr": "0.16.0-preview"
+      },
+      "hash": "700808dafcbff1e3fdf47de316b9bace3d8561b7"
+    },
     "com.google.xr.cardboard": {
       "version": "https://github.com/googlevr/cardboard-xr-plugin.git",
       "depth": 0,
@@ -272,6 +290,18 @@
       "dependencies": {
         "com.unity.ugui": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.xr.arcore": {
+      "version": "4.2.7",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.xr.arsubsystems": "4.2.7",
+        "com.unity.xr.management": "4.0.1",
+        "com.unity.modules.androidjni": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
