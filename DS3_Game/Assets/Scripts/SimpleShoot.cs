@@ -75,7 +75,7 @@ public class SimpleShoot : MonoBehaviour
 
         // Create a bullet and add force on it in direction of the barrel
         // TODO: add script to bullet prefab to do something on collision (like destroy itself)
-        // Note: this also applies a little recoil to the gun
+        // Note: this also applies a little recoil to the gun, so might want to disable Rigidbody or isKinematic=True
         Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
 
         // Add raycast (i.e. laser beam line) to gun
@@ -86,8 +86,19 @@ public class SimpleShoot : MonoBehaviour
             GameObject liner = Instantiate(line);
             // Set positionCount first to your new array size and THEN call the SetPositions with your new array
             liner.GetComponent<LineRenderer>().positionCount = 2;
-            liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position, hasHit ? hitInfo.point :
-                barrelLocation.position + barrelLocation.forward * 100});
+            if (hasHit)
+            {
+                liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position, hitInfo.point});
+                Debug.DrawRay(barrelLocation.position, hitInfo.point, Color.blue, 1f, false); // debug
+            }
+            else
+            {
+                liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position, barrelLocation.position + barrelLocation.forward * 100});
+                Debug.DrawRay(barrelLocation.transform.position, barrelLocation.transform.forward * 100, Color.green, 1f, false); // debug
+                // Debug.Log("Not Hit");
+
+            }
+
             Destroy(liner, 0.5f); // destroy line after 0.5 secs
         }
 
