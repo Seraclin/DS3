@@ -10,6 +10,8 @@ public class SimpleShoot : MonoBehaviour
     public GameObject casingPrefab;
     public GameObject muzzleFlashPrefab;
 
+    public GameObject line; // LineRenderer for raycast
+
     [Header("Location Refrences")]
     [SerializeField] private Animator gunAnimator;
     [SerializeField] private Transform barrelLocation;
@@ -73,7 +75,21 @@ public class SimpleShoot : MonoBehaviour
 
         // Create a bullet and add force on it in direction of the barrel
         // TODO: add script to bullet prefab to do something on collision (like destroy itself)
+        // Note: this also applies a little recoil to the gun
         Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
+
+        // Add raycast (i.e. laser beam line) to gun
+        RaycastHit hitInfo;
+        bool hasHit = Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hitInfo, 100);
+        if (line)
+        {
+            GameObject liner = Instantiate(line);
+            // Set positionCount first to your new array size and THEN call the SetPositions with your new array
+            liner.GetComponent<LineRenderer>().positionCount = 2;
+            liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position, hasHit ? hitInfo.point :
+                barrelLocation.position + barrelLocation.forward * 100});
+            Destroy(liner, 0.5f); // destroy line after 0.5 secs
+        }
 
     }
 
