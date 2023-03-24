@@ -58,8 +58,12 @@ public class NewBehaviourScript : MonoBehaviour
     // When two colliders first touch, both objects need a collider on them
     private void OnCollisionEnter(Collision collision)
     {
-        // Print the object you collided with
+        // Print the object you collided with and change it to red
         Debug.Log("You touched:" + collision.collider.gameObject.name);
+        if(collision.collider.gameObject.CompareTag("Bullet"))
+        {
+            gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        }
     }
 
 }

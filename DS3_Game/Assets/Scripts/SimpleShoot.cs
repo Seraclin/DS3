@@ -11,6 +11,7 @@ public class SimpleShoot : MonoBehaviour
     public GameObject muzzleFlashPrefab;
 
     public GameObject line; // LineRenderer for raycast
+    public Camera fpsCam; // shoot towards camera rather than from gun barrel
 
     [Header("Location Refrences")]
     [SerializeField] private Animator gunAnimator;
@@ -39,6 +40,7 @@ public class SimpleShoot : MonoBehaviour
 
         if (gunAnimator == null)
             gunAnimator = GetComponentInChildren<Animator>();
+
     }
 
     void Update()
@@ -77,10 +79,11 @@ public class SimpleShoot : MonoBehaviour
         // TODO: add script to bullet prefab to do something on collision (like destroy itself)
         // Note: this also applies a little recoil to the gun, so might want to disable Rigidbody or isKinematic=True
         Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
-
+        
         // Add raycast (i.e. laser beam line) to gun
         RaycastHit hitInfo;
-        bool hasHit = Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hitInfo, 100);
+        // bool hasHit = Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hitInfo, 100); // position, forward (direction), out --> hitInfo, range; Note: you can use barrelLocation to shoot from gun (inaccurate)
+        bool hasHit = Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hitInfo, 100); // shoots from camera
         if (line)
         {
             GameObject liner = Instantiate(line);
@@ -89,7 +92,7 @@ public class SimpleShoot : MonoBehaviour
             if (hasHit)
             {
                 liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position, hitInfo.point});
-                Debug.DrawRay(barrelLocation.position, hitInfo.point, Color.blue, 1f, false); // debug
+                Debug.DrawRay(barrelLocation.position, barrelLocation.forward, Color.blue, 1f, false); // debug
             }
             else
             {
@@ -99,7 +102,7 @@ public class SimpleShoot : MonoBehaviour
 
             }
 
-            Destroy(liner, 0.5f); // destroy line after 0.5 secs
+            Destroy(liner, 0.2f); // destroy line after 0.5 secs
         }
 
     }

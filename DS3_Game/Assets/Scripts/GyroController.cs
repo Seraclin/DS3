@@ -11,14 +11,16 @@ using Gyroscope = UnityEngine.InputSystem.Gyroscope; // so you can just write ou
  * This is useful for debugging with Unity Remote (with USB and phone) without needing to build/export the project.
  * Adjust inputs in "XRI Default Input Actions" asset menu
  * Make sure to disable any TrackedPoseDriver(s) when using this, and vice versa
+ * Note: make sure XR Device Simulator is also in the scene, also this rotates with respect to world rotation so this can't be a child of another object
  * */
-public class InputChecker : MonoBehaviour
+public class GyroController : MonoBehaviour
 {
     // Phone is sideways so need to correct rotation for Camera
-    private Gyroscope phoneGyro;
     private Quaternion correctionQuaternion;
     public Camera playerCam;  // assign player cam via inspector
+    public GameObject parentCam; // parent of camera (e.g. CameraOffset) for calibration
 
+    private Quaternion offset; // offset of camera to start where user is currently facing rather than device default
     // Start is called before the first frame update
     void Start()
     {
@@ -43,8 +45,8 @@ public class InputChecker : MonoBehaviour
         }
 
         // get the initial gyroscope reading
-        phoneGyro = Gyroscope.current;
         correctionQuaternion = Quaternion.Euler(90f, 0f, 0f);
+        offset = parentCam.transform.rotation; // subtraction of Quaternion is by multiplying by Quternion.Inverse
     }
 
     // Update is called once per frame
@@ -63,7 +65,7 @@ public class InputChecker : MonoBehaviour
         {
             if (Gyroscope.current.enabled)
             {
-                Debug.Log("InputSystem Gyro: "+Gyroscope.current.angularVelocity.ReadValue()); // Vector3
+                // Debug.Log("InputSystem Gyro: "+Gyroscope.current.angularVelocity.ReadValue()); // Vector3
             }
             else
             { // in case for some reason gyro gets randomly disabled, reenable it
@@ -77,7 +79,7 @@ public class InputChecker : MonoBehaviour
         {
             if (AttitudeSensor.current.enabled)
             {
-                Debug.Log("InputSystem Attitude: " + AttitudeSensor.current.attitude.ReadValue()); // Quaternion
+                // Debug.Log("InputSystem Attitude: " + AttitudeSensor.current.attitude.ReadValue()); // Quaternion
             }
             else
             { // in case for some reason attitude gets randomly disabled, reenable it
@@ -98,6 +100,16 @@ public class InputChecker : MonoBehaviour
         {
             GyroModifyCamera();
         }
+        else
+        {
+            Debug.LogWarning("No Camera on Player!");
+        }
+
+        // J key - Reset gyro position towards current phone orientation
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            offset = correctionQuaternion * GyroToUnity(Input.gyro.attitude);
+        }
     }
 
     public void detectPressedKeyOrButton()
@@ -117,11 +129,14 @@ public class InputChecker : MonoBehaviour
         Quaternion gyroQuaternion = GyroToUnity(Input.gyro.attitude);
         // rotate coordinate system 90 degrees. Correction Quaternion has to come first
         Quaternion calculatedRotation = correctionQuaternion * gyroQuaternion;
+        // TODO: account for offset of device
+
         playerCam.transform.rotation = calculatedRotation;
     }
 
     private static Quaternion GyroToUnity(Quaternion q)
     {
+        // Phone gyro (right handed) has to be converted to Unity Quaternion (left handed)
         return new Quaternion(q.x, q.y, -q.z, -q.w);
     }
 }
