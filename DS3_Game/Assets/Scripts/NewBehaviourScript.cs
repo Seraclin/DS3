@@ -60,7 +60,6 @@ public class NewBehaviourScript : MonoBehaviour
     {
         // Print the object you collided with
         Debug.Log("You touched:" + collision.collider.gameObject.name);
-        
     }
 
 }
