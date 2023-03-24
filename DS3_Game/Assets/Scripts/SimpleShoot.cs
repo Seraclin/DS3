@@ -12,6 +12,7 @@ public class SimpleShoot : MonoBehaviour
 
     public GameObject line; // LineRenderer for raycast
     public Camera fpsCam; // shoot towards camera rather than from gun barrel
+    public GameObject impactEffect; // gun impact particle
 
     [Header("Location Refrences")]
     [SerializeField] private Animator gunAnimator;
@@ -80,10 +81,12 @@ public class SimpleShoot : MonoBehaviour
         // Note: this also applies a little recoil to the gun, so might want to disable Rigidbody or isKinematic=True
         Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
         
-        // Add raycast (i.e. laser beam line) to gun
+        // ==== Add raycast (i.e. laser beam line) to gun ====
         RaycastHit hitInfo;
         // bool hasHit = Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hitInfo, 100); // position, forward (direction), out --> hitInfo, range; Note: you can use barrelLocation to shoot from gun (inaccurate)
-        bool hasHit = Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hitInfo, 100); // shoots from camera
+        bool hasHit = Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hitInfo, 100); // shoots towards camera
+
+        // Add a visible line to where we hit with raycast
         if (line)
         {
             GameObject liner = Instantiate(line);
@@ -104,6 +107,20 @@ public class SimpleShoot : MonoBehaviour
 
             Destroy(liner, 0.2f); // destroy line after 0.5 secs
         }
+
+        // add a little hit impact effect to where raycast hits
+        if (impactEffect)
+        {
+            //  Instantiate(Object original, Vector3 position, Quaternion rotation, Transform parent);
+            GameObject impactObj = Instantiate(impactEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal), hitInfo.transform);
+            Destroy(impactObj, 2f);
+        }
+
+        // Optional: Add a little impact force to object's Rigidbody that we hit
+        //if(hitInfo.rigidbody != null)
+        //{
+        //  hitInfo.rigidbody.AddForce(-hitInfo.normal * 20f);
+        //}
 
     }
 

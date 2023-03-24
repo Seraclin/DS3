@@ -46,7 +46,7 @@ public class GyroController : MonoBehaviour
 
         // get the initial gyroscope reading
         correctionQuaternion = Quaternion.Euler(90f, 0f, 0f);
-        offset = parentCam.transform.rotation; // subtraction of Quaternion is by multiplying by Quternion.Inverse
+        offset = Quaternion.identity; // subtraction of Quaternion is by multiplying by Quternion.Inverse
     }
 
     // Update is called once per frame
@@ -105,10 +105,10 @@ public class GyroController : MonoBehaviour
             Debug.LogWarning("No Camera on Player!");
         }
 
-        // J key - Reset gyro position towards current phone orientation
+        // J key - supposed to Reset gyro position towards current phone orientation, but for now all it does it rotate screen 90 degrees to the right
         if (Input.GetKeyDown(KeyCode.J))
         {
-            offset = correctionQuaternion * GyroToUnity(Input.gyro.attitude);
+            offset = playerCam.transform.rotation;
         }
     }
 
@@ -127,11 +127,10 @@ public class GyroController : MonoBehaviour
     void GyroModifyCamera()
     {
         Quaternion gyroQuaternion = GyroToUnity(Input.gyro.attitude);
-        // rotate coordinate system 90 degrees. Correction Quaternion has to come first
+        // rotate coordinate system 90 degrees. Correction Quaternion has to come first; becaue quaternion multiplication is not commutative!
         Quaternion calculatedRotation = correctionQuaternion * gyroQuaternion;
-        // TODO: account for offset of device
-
-        playerCam.transform.rotation = calculatedRotation;
+        // TODO: account for offset of device, remove 'offset' if causing trouble
+        playerCam.transform.rotation = offset * calculatedRotation;
     }
 
     private static Quaternion GyroToUnity(Quaternion q)

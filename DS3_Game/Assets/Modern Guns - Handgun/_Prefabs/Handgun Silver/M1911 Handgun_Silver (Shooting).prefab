@@ -279,6 +279,8 @@ MonoBehaviour:
     type: 3}
   line: {fileID: 244413497278772461, guid: ced7d7bd3a7128c468a6cdf66595a72d, type: 3}
   fpsCam: {fileID: 0}
+  impactEffect: {fileID: 7139070935738413278, guid: 69d06981e7323da47ab4b05336e6ea4e,
+    type: 3}
   gunAnimator: {fileID: 4552356144310477306}
   barrelLocation: {fileID: 2865007814677201378}
   casingExitLocation: {fileID: 6770146545802020271}
