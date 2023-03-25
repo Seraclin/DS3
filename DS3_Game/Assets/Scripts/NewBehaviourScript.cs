@@ -25,7 +25,7 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // When P key is pressed, increase points by 1
+        // When U key is pressed, increase points by 1
         if (Input.GetKeyDown(KeyCode.U))
         {
             points += 1;
