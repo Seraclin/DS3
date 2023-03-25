@@ -1,13 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TimeManager : MonoBehaviour
 {
-
+    public static TimeManager instance;
     public float remainingTime;
-    private bool gameRunning = true;
+    public bool gameRunning = false;
+    public GameObject timer;
+    public TMP_Text timerText;
+
     // Start is called before the first frame update
+    private void Awake()
+    {
+        TimeManager.instance = this;
+    }
     void Start()
     {
         UpdateTimer();
@@ -31,7 +39,7 @@ public class TimeManager : MonoBehaviour
                 gameRunning = false;
                 remainingTime = 0;
             }
-        }
+        } 
     }
 
     //updates the actual time text
@@ -39,7 +47,7 @@ public class TimeManager : MonoBehaviour
     void UpdateTimer()
     {
         int seconds = (int)remainingTime % 60;
-        SystemManager.instance.timeText.text = seconds.ToString();
+        timerText.text = seconds.ToString();
 
     }
 }
