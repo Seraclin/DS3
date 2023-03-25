@@ -30,8 +30,7 @@ public class Bullet : MonoBehaviour
         if(collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Untagged")
         {
             // Put code here
-            
-            Destroy(gameObject, 0.1f); // Note: Destroy will terminate script here since this gameObject is deleted
+            Destroy(gameObject); // Note: Destroy will terminate script here since this gameObject is deleted
         }
     }
 }

@@ -131,7 +131,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh41652
+  m_Name: pb_Mesh30228
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -369,6 +369,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 374816730}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &462387343
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2727711591492215538, guid: 1997047b7d57105489f68e61cb742a50,
+        type: 3}
+      propertyPath: m_Name
+      value: Player_Cardboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210462431028367684, guid: 1997047b7d57105489f68e61cb742a50,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210462431028367684, guid: 1997047b7d57105489f68e61cb742a50,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210462431028367684, guid: 1997047b7d57105489f68e61cb742a50,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210462431028367684, guid: 1997047b7d57105489f68e61cb742a50,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210462431028367684, guid: 1997047b7d57105489f68e61cb742a50,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210462431028367684, guid: 1997047b7d57105489f68e61cb742a50,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210462431028367684, guid: 1997047b7d57105489f68e61cb742a50,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210462431028367684, guid: 1997047b7d57105489f68e61cb742a50,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210462431028367684, guid: 1997047b7d57105489f68e61cb742a50,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210462431028367684, guid: 1997047b7d57105489f68e61cb742a50,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210462431028367684, guid: 1997047b7d57105489f68e61cb742a50,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1997047b7d57105489f68e61cb742a50, type: 3}
 --- !u!1 &599916901
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +622,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
@@ -1081,7 +1150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &885363131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2271,7 +2340,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh41560
+  m_Name: pb_Mesh30134
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2435,7 +2504,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh41610
+  m_Name: pb_Mesh30184
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3093,7 +3162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2130999651
 MonoBehaviour:
   m_ObjectHideFlags: 0

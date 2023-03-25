@@ -85,7 +85,8 @@ public class SimpleShoot : MonoBehaviour
         RaycastHit hitInfo;
         // bool hasHit = Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hitInfo, 100); // position, forward (direction), out --> hitInfo, range; Note: you can use barrelLocation to shoot from gun (inaccurate)
         bool hasHit = Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hitInfo, 100); // shoots towards camera
-
+        Debug.DrawRay(fpsCam.transform.position, fpsCam.transform.forward, Color.green, 1f, false); // debug
+        //Debug.Log(hitInfo.transform.name); // debug
         // Add a visible line to where we hit with raycast
         if (line)
         {
@@ -95,7 +96,7 @@ public class SimpleShoot : MonoBehaviour
             if (hasHit)
             {
                 liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position, hitInfo.point});
-                Debug.DrawRay(barrelLocation.position, barrelLocation.forward, Color.blue, 1f, false); // debug
+                Debug.DrawRay(barrelLocation.position, hitInfo.point, Color.blue, 1f, false); // debug
             }
             else
             {
