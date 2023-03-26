@@ -100,9 +100,9 @@ public class SimpleShoot : MonoBehaviour
                 liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position, hitInfo.point});
                 Debug.DrawRay(barrelLocation.position, hitInfo.point, Color.blue, 1f, false); // debug
 
-                // bullet
-                Vector3 bulletDirection = hitInfo.point - barrelLocation.position;
-                Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().velocity = bulletDirection * shotPower; ;
+                // bullet (not recommended)
+                //Vector3 bulletDirection = hitInfo.point - barrelLocation.position;
+                //Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().velocity = bulletDirection * shotPower; ;
             }
             else
             {
@@ -110,9 +110,9 @@ public class SimpleShoot : MonoBehaviour
                 liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position, barrelLocation.position + barrelLocation.forward * 100});
                 Debug.DrawRay(barrelLocation.transform.position, barrelLocation.transform.forward * 100, Color.green, 1f, false); // debug
 
-                // bullet
-                Vector3 bulletDirection = (fpsCam.transform.position + fpsCam.transform.forward * 1000) - barrelLocation.position;
-                Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().velocity = bulletDirection * shotPower;
+                // bullet (not recommended)
+                //Vector3 bulletDirection = (fpsCam.transform.position + fpsCam.transform.forward * 1000) - barrelLocation.position;
+                //Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().velocity = bulletDirection * shotPower;
             }
 
             Destroy(liner, 0.2f); // destroy line after 0.5 secs
