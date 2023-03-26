@@ -6,6 +6,8 @@ using UnityEngine;
  * Makes sure the bullets disappear when they collide with an object (or after a certain time)
  * Probably should label gameObjects with tags like "Wall" or "Enemy"
  * to define different collision behavior.
+ * Note: make sure Rigidbody is using "Continuous Dynamic" Collision Detection or else it will not register
+ * (Collision Detection - Discrete has better performance but is less accurate especially for fast objects
  *  
  */
 public class Bullet : MonoBehaviour

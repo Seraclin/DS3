@@ -4584,7 +4584,7 @@ GameObject:
   - component: {fileID: 7049516085624028856}
   - component: {fileID: 7049052198640566142}
   m_Layer: 0
-  m_Name: HitEffect_Wood
+  m_Name: HitEffect_Wood_nohole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9484,7 +9484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7141000591903433782
 Transform:
   m_ObjectHideFlags: 0

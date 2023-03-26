@@ -49,7 +49,7 @@ public class SimpleShoot : MonoBehaviour
         // If you want a different input, change it here
         // Docs: https://docs.unity3d.com/ScriptReference/Input.GetButtonDown.html
         // Edit > Project Settings > Input Manager to bring up the Input Manager
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.H))
         {
             //Calls animation on the gun that has the relevant animation events that will fire
             gunAnimator.SetTrigger("Fire");
@@ -75,19 +75,20 @@ public class SimpleShoot : MonoBehaviour
         //cancels if there's no bullet prefeb
         if (!bulletPrefab)
         { return; }
-
-        // Create a bullet and add force on it in direction of the barrel
-        // TODO: add script to bullet prefab to do something on collision (like destroy itself)
-        // Note: this also applies a little recoil to the gun, so might want to disable Rigidbody or isKinematic=True
-        Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
-        
-        // ==== Add raycast (i.e. laser beam line) to gun ====
+       
+        // ==== Calculate raycast from player's camera ====
         RaycastHit hitInfo;
         // bool hasHit = Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hitInfo, 100); // position, forward (direction), out --> hitInfo, range; Note: you can use barrelLocation to shoot from gun (inaccurate)
-        bool hasHit = Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hitInfo, 100); // shoots towards camera
+        bool hasHit = Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hitInfo, 500); // shoots towards camera
         Debug.DrawRay(fpsCam.transform.position, fpsCam.transform.forward, Color.green, 1f, false); // debug
         //Debug.Log(hitInfo.transform.name); // debug
-        // Add a visible line to where we hit with raycast
+
+        // Create a bullet and add force on it in direction of the barrel
+        // Note: this also applies a little recoil to the gun, so might want to disable Rigidbody or isKinematic=True
+        // use Rigidbody.velocity for constant speed and AddForce for add a force
+        //Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
+        
+        // Add a visible line and bullet from gun barrel to where we hit with raycast (not recommended)
         if (line)
         {
             GameObject liner = Instantiate(line);
@@ -95,26 +96,51 @@ public class SimpleShoot : MonoBehaviour
             liner.GetComponent<LineRenderer>().positionCount = 2;
             if (hasHit)
             {
+                // line
                 liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position, hitInfo.point});
                 Debug.DrawRay(barrelLocation.position, hitInfo.point, Color.blue, 1f, false); // debug
+
+                // bullet
+                Vector3 bulletDirection = hitInfo.point - barrelLocation.position;
+                Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().velocity = bulletDirection * shotPower; ;
             }
             else
             {
+                // line
                 liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position, barrelLocation.position + barrelLocation.forward * 100});
                 Debug.DrawRay(barrelLocation.transform.position, barrelLocation.transform.forward * 100, Color.green, 1f, false); // debug
-                // Debug.Log("Not Hit");
 
+                // bullet
+                Vector3 bulletDirection = (fpsCam.transform.position + fpsCam.transform.forward * 1000) - barrelLocation.position;
+                Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().velocity = bulletDirection * shotPower;
             }
 
             Destroy(liner, 0.2f); // destroy line after 0.5 secs
         }
 
-        // add a little hit impact effect to where raycast hits
-        if (impactEffect)
+        
+
+        // Destroy target hit by Raycast via Target's DestroyTarget() method
+        // SendMessage docs: https://docs.unity3d.com/ScriptReference/GameObject.SendMessage.html
+        if (hasHit && hitInfo.collider.gameObject.CompareTag("Target"))
         {
+            // add target specific impact particle effect
             //  Instantiate(Object original, Vector3 position, Quaternion rotation, Transform parent);
-            GameObject impactObj = Instantiate(impactEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal), hitInfo.transform);
-            Destroy(impactObj, 2f);
+            //GameObject impactObj = Instantiate(impactEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal), hitInfo.transform); // particle as child
+            object[] parameters = { hitInfo.point, Quaternion.LookRotation(hitInfo.normal) };
+            hitInfo.collider.gameObject.SendMessage("playTargetParticle", parameters, SendMessageOptions.DontRequireReceiver);
+            hitInfo.collider.gameObject.SendMessage("DestroyTarget", SendMessageOptions.DontRequireReceiver);
+        }
+        else if (hasHit)
+        {
+            // add a little hit impact particle effect to where raycast hits (not target specific)
+            if (impactEffect)
+            {
+                //  Instantiate(Object original, Vector3 position, Quaternion rotation, Transform parent);
+                //GameObject impactObj = Instantiate(impactEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal), hitInfo.transform); // particle as child
+                GameObject impactObj = Instantiate(impactEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+                Destroy(impactObj, 2f);
+            }
         }
 
         // Optional: Add a little impact force to object's Rigidbody that we hit
