@@ -129,7 +129,7 @@ public class SimpleShoot : MonoBehaviour
             //GameObject impactObj = Instantiate(impactEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal), hitInfo.transform); // particle as child
             object[] parameters = { hitInfo.point, Quaternion.LookRotation(hitInfo.normal) };
             hitInfo.collider.gameObject.SendMessage("playTargetParticle", parameters, SendMessageOptions.DontRequireReceiver);
-            hitInfo.collider.gameObject.SendMessage("DestroyTarget", SendMessageOptions.DontRequireReceiver);
+            hitInfo.collider.gameObject.SendMessage("DestroyTargetPlayer", SendMessageOptions.DontRequireReceiver);
         }
         else if (hasHit)
         {

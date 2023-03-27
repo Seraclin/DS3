@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Target
+  - Despawn
   layers:
   - Default
   - TransparentFX
