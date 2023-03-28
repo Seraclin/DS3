@@ -77,4 +77,12 @@ public class Target : MonoBehaviour
 
         transform.position = endPosition; // Ensure the object is in the exact end position when the coroutine ends
     }
+
+    public void Update()
+    {
+        if (!SystemManager.instance.gameRunning)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

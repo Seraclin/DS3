@@ -12,6 +12,7 @@ public class SystemManager : MonoBehaviour
     private float remainingTime;
     public TMP_Text timerText;
 
+    public GameObject spawner;
 
     private void Awake()
     {

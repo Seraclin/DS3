@@ -723,6 +723,9 @@ MonoBehaviour:
   button: {fileID: 2393664119976128165}
   timer: {fileID: 210896219}
   gameRunning: 0
+  gameTime: 10
+  timerText: {fileID: 787130753}
+  spawner: {fileID: 1701812159}
 --- !u!1 &270822231
 GameObject:
   m_ObjectHideFlags: 0
@@ -2026,53 +2029,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 55a05d7345e094dee9a176728bb6070f, type: 3}
---- !u!1 &1116898669
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1116898671}
-  - component: {fileID: 1116898670}
-  m_Layer: 0
-  m_Name: Time Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1116898670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116898669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95b5e711a41f8c748986a5ffff694cb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  remainingTime: 10
-  timerText: {fileID: 787130753}
-  button: {fileID: 2393664119976128165}
---- !u!4 &1116898671
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116898669}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1717971060}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1161959898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,6 +2434,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 620001436}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1701812159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 888384421351005317, guid: 8d9f411a3a6905a4ba69213edb8181af,
+    type: 3}
+  m_PrefabInstance: {fileID: 888384421119764937}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1717971059
 GameObject:
   m_ObjectHideFlags: 0
@@ -2507,7 +2469,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 266077803}
-  - {fileID: 1116898671}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3063,6 +3024,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TargetSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 888384421351005317, guid: 8d9f411a3a6905a4ba69213edb8181af,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 888384421351005337, guid: 8d9f411a3a6905a4ba69213edb8181af,
         type: 3}
       propertyPath: m_RootOrder
@@ -3230,3 +3196,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20acc17dee3d3694dbffe947b255c920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeManager: {fileID: 0}

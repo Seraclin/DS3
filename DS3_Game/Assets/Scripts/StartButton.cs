@@ -16,6 +16,7 @@ public class StartButton : MonoBehaviour
         gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         SystemManager.instance.gameRunning = true;
         SystemManager.instance.timer.SetActive(true);
+        SystemManager.instance.spawner.SetActive(true);
     }
 
     public void ResetButton()
@@ -23,6 +24,7 @@ public class StartButton : MonoBehaviour
         gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
         SystemManager.instance.gameRunning = false;
         SystemManager.instance.timer.SetActive(false);
+        SystemManager.instance.spawner.SetActive(false);
         SystemManager.instance.resetTimer();
     }
 
