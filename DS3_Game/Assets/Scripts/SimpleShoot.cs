@@ -13,6 +13,7 @@ public class SimpleShoot : MonoBehaviour
     public GameObject line; // LineRenderer for raycast
     public Camera fpsCam; // shoot towards camera rather than from gun barrel
     public GameObject impactEffect; // gun impact particle
+    private AudioSource gunNoise; // gun shot sound component
 
     [Header("Location Refrences")]
     [SerializeField] private Animator gunAnimator;
@@ -42,6 +43,7 @@ public class SimpleShoot : MonoBehaviour
         if (gunAnimator == null)
             gunAnimator = GetComponentInChildren<Animator>();
 
+        gunNoise = gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -70,6 +72,10 @@ public class SimpleShoot : MonoBehaviour
 
             //Destroy the muzzle flash effect
             Destroy(tempFlash, destroyTimer);
+        }
+        if (gunNoise)
+        {   // Play gun shot sound
+            gunNoise.Play();
         }
 
         //cancels if there's no bullet prefeb
