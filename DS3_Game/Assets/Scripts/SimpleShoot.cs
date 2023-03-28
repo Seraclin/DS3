@@ -131,6 +131,21 @@ public class SimpleShoot : MonoBehaviour
             hitInfo.collider.gameObject.SendMessage("playTargetParticle", parameters, SendMessageOptions.DontRequireReceiver);
             hitInfo.collider.gameObject.SendMessage("DestroyTargetPlayer", SendMessageOptions.DontRequireReceiver);
         }
+        else if (hasHit && hitInfo.collider.gameObject.CompareTag("Button"))
+        {
+            // same as hitting target, but specifically for button
+            if (!SystemManager.instance.gameRunning)
+            {
+                if (impactEffect)
+                {
+                    Debug.Log("button hit");
+                    //Once the button is hit, the button will execute StartTimer function.
+                    GameObject impactObj = Instantiate(impactEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+                    hitInfo.collider.gameObject.SendMessage("StartTimer", SendMessageOptions.DontRequireReceiver);
+                    Destroy(impactObj, 2f);
+                }
+            }
+        }
         else if (hasHit)
         {
             // add a little hit impact particle effect to where raycast hits (not target specific)

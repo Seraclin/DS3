@@ -5,17 +5,11 @@ using TMPro;
 
 public class TimeManager : MonoBehaviour
 {
-    public static TimeManager instance;
     public float remainingTime;
-    public bool gameRunning = false;
-    public GameObject timer;
     public TMP_Text timerText;
+    public GameObject button;
 
     // Start is called before the first frame update
-    private void Awake()
-    {
-        TimeManager.instance = this;
-    }
     void Start()
     {
         UpdateTimer();
@@ -26,20 +20,17 @@ public class TimeManager : MonoBehaviour
     //If timer reaches zero, will print message on console, and end game by changing gameRunning to False
     void Update()
     {
-        if (gameRunning)
+        if (remainingTime > 0)
         {
-            if (remainingTime > 0)
-            {
-                remainingTime -= Time.deltaTime;
-                UpdateTimer();
-            }
-            else
-            {
-                Debug.Log("Time is Over!");
-                gameRunning = false;
-                remainingTime = 0;
-            }
-        } 
+            remainingTime -= Time.deltaTime;
+            UpdateTimer();
+        }
+        else
+        {
+            Debug.Log("Time is Over!");
+            remainingTime = 0;
+            button.SendMessage("ResetButton", SendMessageOptions.DontRequireReceiver);
+        }
     }
 
     //updates the actual time text
