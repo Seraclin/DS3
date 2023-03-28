@@ -53,11 +53,8 @@ public class Target : MonoBehaviour
     {   // When the target is destroyed specifically by a player's gun
         // public call makes it easier to deal with
         Debug.Log("Target has been hit");
-        // TODO: add points to player's score or something
-        if (gameManager)
-        {
-            // put code here
-        }
+        //add points to player's score
+        SystemManager.instance.points += score;
         Destroy(gameObject);
     }
     public IEnumerator MoveObject(object[] positions)

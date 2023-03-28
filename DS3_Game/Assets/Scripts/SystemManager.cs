@@ -4,13 +4,17 @@ using TMPro;
 public class SystemManager : MonoBehaviour
 {
     public GameObject button;
-    public GameObject timer;
     public bool gameRunning;
     public static SystemManager instance;
 
+    public GameObject timer;
     public float gameTime;
     private float remainingTime;
     public TMP_Text timerText;
+
+    public int points;
+    public GameObject pointPanel;
+    public TMP_Text pointText;
 
     public GameObject spawner;
 
@@ -22,7 +26,7 @@ public class SystemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        resetTimer();
+        resetGame();
         UpdateTimer();
     }
 
@@ -34,6 +38,7 @@ public class SystemManager : MonoBehaviour
             if (remainingTime > 0)
             {
                 remainingTime -= Time.deltaTime;
+                pointText.text = points.ToString();
                 UpdateTimer();
             }
             else
@@ -51,8 +56,9 @@ public class SystemManager : MonoBehaviour
         timerText.text = seconds.ToString();
 
     }
+    
 
-    public void resetTimer()
+    public void resetGame()
     {
         remainingTime = gameTime;
     }

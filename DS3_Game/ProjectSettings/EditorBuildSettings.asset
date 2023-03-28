@@ -5,15 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/VrMode.unity
-    guid: 4812ec05e87b8414abcdfe0d625c0e60
-  - enabled: 0
-    path: Assets/Scenes/SampleSceneSam.unity
-    guid: ac796210b931b364fa7ba9dc2de30a1e
-  - enabled: 0
-    path: Assets/Scenes/TimerScene.unity
-    guid: 9f315d09b85c20949878081dd61629d1
   - enabled: 1
     path: Assets/Scenes/Desert_Sam.unity
     guid: 6a9c4dc3d7073614da3fd7eca29e3eb7

@@ -17,6 +17,7 @@ public class StartButton : MonoBehaviour
         SystemManager.instance.gameRunning = true;
         SystemManager.instance.timer.SetActive(true);
         SystemManager.instance.spawner.SetActive(true);
+        SystemManager.instance.points = 0;
     }
 
     public void ResetButton()
@@ -25,7 +26,7 @@ public class StartButton : MonoBehaviour
         SystemManager.instance.gameRunning = false;
         SystemManager.instance.timer.SetActive(false);
         SystemManager.instance.spawner.SetActive(false);
-        SystemManager.instance.resetTimer();
+        SystemManager.instance.resetGame();
     }
 
 }
