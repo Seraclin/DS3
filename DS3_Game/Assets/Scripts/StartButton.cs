@@ -10,6 +10,7 @@ public class StartButton : MonoBehaviour
         gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
     }
 
+    public GameObject timeManager;
     public void StartTimer()
     { 
         gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
@@ -22,6 +23,7 @@ public class StartButton : MonoBehaviour
         gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
         SystemManager.instance.gameRunning = false;
         SystemManager.instance.timer.SetActive(false);
+        SystemManager.instance.resetTimer();
     }
 
 }
