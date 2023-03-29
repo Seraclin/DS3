@@ -3218,6 +3218,11 @@ PrefabInstance:
       objectReference: {fileID: 1701812159}
     - target: {fileID: 6020790512300200166, guid: 791e910067483054d9ae91a10e078b49,
         type: 3}
+      propertyPath: gameTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020790512300200166, guid: 791e910067483054d9ae91a10e078b49,
+        type: 3}
       propertyPath: pointText
       value: 
       objectReference: {fileID: 2035620433}
