@@ -7,13 +7,14 @@ By Samantha Lin [@Seraclin](https://github.com/Seraclin), Emma Klein, Muhammad S
 <br>
 <img width="390" alt="image" src="https://user-images.githubusercontent.com/53448490/228556369-2c19f142-bfb7-4f30-b08a-ae504d5e9e1a.png">
 <img width="386" alt="image" src="https://user-images.githubusercontent.com/53448490/228557036-324e14cf-b06e-472a-9393-c46726e5496d.png">
+<br>
 Demo Video: 
 ###  How to Play
 Tilt your phone device to aim the gun. You can shoot either by tapping the screen, using the H key, or using an external controller with a bumper button. VR mode can be turned off by tapping the `X`, and can be turned on again by tapping anywhere on the screen. (To change the keybind for shooting, you will have to edit the `SimpleShoot.cs` script) 
 <br>
 Shoot the "Shoot to Start" target to start the game. A timer will appear and start counting down. Shoot the targets that pop up before time runs out. Red/blue/rabbit targets are worth 10/20/50 points each. When time runs out, the targets will disappear, and your final total score will be displayed in the top right.
 <br>
-To play this VR game, download this repository and open the `DS3_Game` folder in Unity `2021.3.20f1`. Then build the project (`File > Build Settings`) for your respective device following the [instructions detailed below](https://github.com/Seraclin/DS3/edit/main/README.md#androidios-vr-with-unity).
+To play this VR game, download this repository and open the `DS3_Game` folder in Unity `2021.3.20f1`. Then build the project (`File > Build Settings`) for your respective device following the instructions detailed below in *Android/iOS VR with Unity* section.
 # Tips and Tricks
 I used Unity `2021.3.20f1` on Windows 10 with an Android phonen for VR development. And here are some common things I came across. There might be different behavior for MacOS and iPhone or different versions of Unity.
 ### Getting Started
