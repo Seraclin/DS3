@@ -4,7 +4,10 @@ VR Game for DS3: Design For Another World for CS485-1 Human Computer Interaction
 Made in Unity `2021.3.20f1`
 <br>
 By Samantha Lin [@Seraclin](https://github.com/Seraclin), Emma Klein, Muhammad Shahid, Allen Zhang [@theJokerEvoker](https://github.com/theJokerEvoker), Jonathan Kim [@JKim0212](https://github.com/JKim0212)
-
+<img width="390" alt="image" src="https://user-images.githubusercontent.com/53448490/228556369-2c19f142-bfb7-4f30-b08a-ae504d5e9e1a.png">
+<img width="386" alt="image" src="https://user-images.githubusercontent.com/53448490/228557036-324e14cf-b06e-472a-9393-c46726e5496d.png">
+###  Instructions
+Shoot the "Shoot to Start" target to start the game. A timer will appear and start counting down. Shoot the red/blue/rabbit targets that are worth 10/20/50 points each. When time runs out, the targets will stop showing up, and your final total score will display in the top right.
 # Tips and Tricks
 I used Unity `2021.3.20f1` on Windows 10 with an Android for VR development. And here are some common things I came across. There might be different behavior for MacOS and iPhone or different versions of Unity.
 ### Getting Started
@@ -40,6 +43,7 @@ Here's my recommended start setup for using iOS/Android with Unity:
 * If you are directly using the gyroscope and attitudeSensor, you have to do some Quaternion math to rotate them correctly in Unity. A formula for this can be found [here](https://gamedev.stackexchange.com/questions/174107/unity-gyroscope-orientation-attitude-wrong) (note: this formula will only rotate the camera with respect to your device's position rather than to your current position. You can add in an offset to fix this).
     * Another [code snippet](https://forum.unity.com/threads/re-orient-trackedposedriver.499715/) can be useful for reorienting a TrackedPoseDriver to face a certain direction. 
 * To build your project to iOS, you MUST have [Xcode](https://developer.apple.com/xcode/), which is only available on MacOS. Thus, you cannot build to an iOS device unless you have a Mac (or an emulator at your own risk). Here's a [tutorial](https://www.youtube.com/watch?v=-Hr4-XNCf8Y) for building to Apple for testing. I recommend downloading it directly from the [Xcode downloads](https://developer.apple.com/download/all/?q=Xcode) rather than installing it from the App Store.
+    * Also iOS can only have up to 3 devices registered.
     * If Xcode is throwing an error about "Failed to Prepare Device for Deployment..." and incompatable versions, do NOT update your iOS device until trying: a) restarting your iOS and Mac devices, b) checking your version of iOS and MacOS is compatible with an older version of Xcode, c) checking the latest iOS version and MacOS is compatible with the latest stable Xcode version. Sometimes Apple will publish an iOS update and not update the compatibility with the latest stable Xcode version. It's difficult to revert iOS versions, so it's easier to download an older version of Xcode. If you already installed the latest iOS update and discover it isn't compatible with the latest stable Xcode version, some workarounds are: 
         * Download a beta version of Xcode that is compatible with your iOS version. This might involve updating your MacOS too.
         * (Requires an Apple Dev account) This method allows you to keep your stable Xcode version while making it compatible with the latest iOS. Download the RC3 build from [developer.apple.com](developer.apple.com) - extract the xip; Right click, "show package contents", then navigate to the directory `Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport`; Copy the 16.4 (or your latest iOS version) directory to your local installed XCode instance (same directory Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport); You will probably find that you need to copy the AppleWatch (9.4) and AppleTV equivalent directories as required to solve the problem.
