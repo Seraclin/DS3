@@ -16,7 +16,8 @@ public class SystemManager : MonoBehaviour
     public GameObject pointPanel;
     public TMP_Text pointText;
 
-    public GameObject spawner;
+    public GameObject spawner_red;
+    public GameObject spawner_blue;
 
     private void Awake()
     {

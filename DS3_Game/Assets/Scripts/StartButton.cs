@@ -18,7 +18,8 @@ public class StartButton : MonoBehaviour
         gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         SystemManager.instance.gameRunning = true;
         SystemManager.instance.timer.SetActive(true);
-        SystemManager.instance.spawner.SetActive(true);
+        SystemManager.instance.spawner_red.SetActive(true);
+        SystemManager.instance.spawner_blue.SetActive(true);
         SystemManager.instance.points = 0;
 
         gameObject.GetComponent<AudioSource>().Play(); // play audio
@@ -39,7 +40,8 @@ public class StartButton : MonoBehaviour
 
         SystemManager.instance.gameRunning = false;
         SystemManager.instance.timer.SetActive(false);
-        SystemManager.instance.spawner.SetActive(false);
+        SystemManager.instance.spawner_red.SetActive(false);
+        SystemManager.instance.spawner_blue.SetActive(false);
         SystemManager.instance.resetGame();
     }
 

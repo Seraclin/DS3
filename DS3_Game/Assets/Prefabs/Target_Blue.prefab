@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f1ebe5871639847995c196b32e5a51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 10
+  score: 20
   gameManager: {fileID: 0}
   particleEffect: {fileID: 7139070935738413278, guid: 5bd58926a9eaa484d9616cc10cbe6823,
     type: 3}
