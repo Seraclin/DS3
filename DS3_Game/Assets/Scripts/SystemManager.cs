@@ -18,6 +18,7 @@ public class SystemManager : MonoBehaviour
 
     public GameObject spawner_red;
     public GameObject spawner_blue;
+    public GameObject spawner_rabbit;
 
     private void Awake()
     {
