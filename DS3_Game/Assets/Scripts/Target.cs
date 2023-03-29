@@ -13,17 +13,25 @@ public class Target : MonoBehaviour
     public int score = 10; // score to increment by
     public GameObject gameManager; // game manager for score
     public GameObject particleEffect; // particle effect when target is destroyed
-    // Don't need start/update()
+    private AudioSource targetAudio; // target destroy sound
+    // Don't need update()
+    void Start()
+    {
+        // I have to refer to external TargetAudio object at runtime
+        // as this object will destroy itself before audio can play
+        targetAudio = GameObject.Find("TargetAudio").GetComponent<AudioSource>();
+    }
+
 
     private void OnCollisionEnter(Collision collision)
     { // only if using physical rigidbody bullet object
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Debug.Log("You hit the target");
-            // TODO: add points to player's score or something
-            if (gameManager)
+            if (targetAudio)
             {
-                // put code here
+                // refer to audio source to play
+                targetAudio.Play();
             }
             Destroy(gameObject);
         }
@@ -55,6 +63,11 @@ public class Target : MonoBehaviour
         Debug.Log("Target has been hit");
         //add points to player's score
         SystemManager.instance.points += score;
+        if (targetAudio)
+        {
+            // refer to audio source to play
+            targetAudio.Play();
+        }
         Destroy(gameObject);
     }
     public IEnumerator MoveObject(object[] positions)

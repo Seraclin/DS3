@@ -38,7 +38,7 @@ public class SystemManager : MonoBehaviour
             if (remainingTime > 0)
             {
                 remainingTime -= Time.deltaTime;
-                pointText.text = points.ToString();
+                pointText.text = "Score: "+points.ToString();
                 UpdateTimer();
             }
             else

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using TMPro; // for text
+
 public class StartButton : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -18,11 +20,20 @@ public class StartButton : MonoBehaviour
         SystemManager.instance.timer.SetActive(true);
         SystemManager.instance.spawner.SetActive(true);
         SystemManager.instance.points = 0;
+
+        // remove start button from visibility, so player can shoot properly
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        gameObject.GetComponent<Renderer>().enabled = false;
+        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "";
     }
 
     public void ResetButton()
     {
-        gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+        // make start button reappear
+        gameObject.GetComponent<BoxCollider>().enabled = true;
+        gameObject.GetComponent<Renderer>().enabled = true;
+        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "Shoot to Start";
+
         SystemManager.instance.gameRunning = false;
         SystemManager.instance.timer.SetActive(false);
         SystemManager.instance.spawner.SetActive(false);
