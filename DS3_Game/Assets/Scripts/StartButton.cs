@@ -21,6 +21,8 @@ public class StartButton : MonoBehaviour
         SystemManager.instance.spawner.SetActive(true);
         SystemManager.instance.points = 0;
 
+        gameObject.GetComponent<AudioSource>().Play(); // play audio
+
         // remove start button from visibility, so player can shoot properly
         gameObject.GetComponent<BoxCollider>().enabled = false;
         gameObject.GetComponent<Renderer>().enabled = false;
@@ -33,6 +35,7 @@ public class StartButton : MonoBehaviour
         gameObject.GetComponent<BoxCollider>().enabled = true;
         gameObject.GetComponent<Renderer>().enabled = true;
         gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "Shoot to Start";
+        gameObject.GetComponent<AudioSource>().Play(); // play audio
 
         SystemManager.instance.gameRunning = false;
         SystemManager.instance.timer.SetActive(false);
