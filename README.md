@@ -14,7 +14,7 @@ Tilt your phone device to aim the gun. You can shoot either by tapping the scree
 <br>
 Shoot the "Shoot to Start" target to start the game. A timer will appear and start counting down. Shoot the targets that pop up before time runs out. Red/blue/rabbit targets are worth 10/20/50 points each. When time runs out, the targets will disappear, and your final total score will be displayed in the top right.
 <br>
-To play this VR game, download this repository and open the `DS3_Game` folder in Unity `2021.3.20f1`. Then build the project (`File > Build Settings`) for your respective device following the instructions detailed below in the **Android/iOS VR with Unity** section.
+To play this VR game, download this repository and open the `DS3_Game` folder in Unity `2021.3.20f1`. Then build the `Desert_Sam` scene in the "Assets/Scenes" folder via `File > Build Settings` for your respective device following the instructions detailed below in the **Android/iOS VR with Unity** section.
 # Tips and Tricks
 I used Unity `2021.3.20f1` on Windows 10 with an Android phonen for VR development. And here are some common things I came across. There might be different behavior for MacOS and iPhone or different versions of Unity.
 ### Getting Started
