@@ -8,7 +8,7 @@ By Samantha Lin [@Seraclin](https://github.com/Seraclin), Emma Klein, Muhammad S
 <img width="390" alt="image" src="https://user-images.githubusercontent.com/53448490/228556369-2c19f142-bfb7-4f30-b08a-ae504d5e9e1a.png">
 <img width="386" alt="image" src="https://user-images.githubusercontent.com/53448490/228557036-324e14cf-b06e-472a-9393-c46726e5496d.png">
 <br>
-Demo Video: https://youtu.be/tVGmZzoL_os
+Demo Video: https://youtu.be/MGABwUmfoZM
 ###  How to Play: Western Shootout
 Tilt your phone device to aim the gun. You can shoot either by tapping the screen, using the H key, or using an external controller with a bumper button. VR mode can be turned off by tapping the `X`, and can be turned on again by tapping anywhere on the screen. (To change the keybind for shooting, you will have to edit the `SimpleShoot.cs` script) 
 <br>
