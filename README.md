@@ -3,7 +3,7 @@
 <br>
 Made in Unity `2021.3.20f1`, compatible with iOS or Android devices.
 <br>
-By [@Seraclin](https://github.com/Seraclin), Emma Klein, Muhammad Shahid, Allen Zhang [@theJokerEvoker](https://github.com/theJokerEvoker), Jonathan Kim [@JKim0212](https://github.com/JKim0212)
+By Samantha Lin [@SuperbGecko](https://github.com/SuperbGecko), Emma Klein, Muhammad Shahid, Allen Zhang [@theJokerEvoker](https://github.com/theJokerEvoker), Jonathan Kim [@JKim0212](https://github.com/JKim0212)
 <br>
 <img width="390" alt="image" src="https://user-images.githubusercontent.com/53448490/228556369-2c19f142-bfb7-4f30-b08a-ae504d5e9e1a.png">
 <img width="386" alt="image" src="https://user-images.githubusercontent.com/53448490/228557036-324e14cf-b06e-472a-9393-c46726e5496d.png">
